@@ -22,19 +22,16 @@ jobs:
             docker run --name=taskdock -v "$(pwd)/logs/:/home/logs/" builder
             exit
             
-
-        - name: docker cp
-          shell: bash
-          run: docker cp taskdock:/task/_build artifacts
-            
-            
-
         - name: artifacts
           shell: bash
           run: |
             mkdir artifacts
             touch touch artifacts/artifacts.txt
             docker inspect builder > artifacts/artifacts.txt
+
+        - name: docker cp
+          shell: bash
+          run: docker cp taskdock:/task/_build artifacts
             
         - name: Publish
           uses: actions/upload-artifact@v2
