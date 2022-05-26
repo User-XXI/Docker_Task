@@ -15,12 +15,6 @@ jobs:
             docker inspect builder
             docker ps -a
             
-        - uses: actions/checkout@v3
-        - name: docker -> actions (artifacts)
-          shell: bash
-          run: |
-            docker run -it -v "$(pwd)/logs/:/home/logs/" builder
-            docker cp builder:/task/_build artifacts
             
         - uses: actions/checkout@v3
         - name: artifacts
