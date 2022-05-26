@@ -1,4 +1,4 @@
 project(HelloWorld)
 cmake_minimum_required(VERSION 3.4)
 
-add_executable(hello_world main.cpp)
+add_executable(HelloWorld main.cpp)
