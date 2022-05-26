@@ -6,23 +6,27 @@ jobs:
   Docker:
       runs-on: ubuntu-latest
       steps:
+
         - uses: actions/checkout@v3
+        - name: fix docker 
+          shell: bash
+          run: sudo chmod 666 /var/run/docker.sock
+
         - name: docker build
           shell: bash
           run: docker build -t builder .
-            
-        - uses: actions/checkout@v3
+
         - name: docker run
           shell: bash
           run: docker run --name=taskdock -it -v "$(pwd)/logs/:/home/logs/" builder
             
-        - uses: actions/checkout@v3
+
         - name: docker cp
           shell: bash
           run: docker cp taskdock:/task/_build artifacts
             
             
-        - uses: actions/checkout@v3
+
         - name: artifacts
           shell: bash
           run: |
