@@ -3,14 +3,14 @@ on:
   push:
   
 jobs:
-  docker:
+  Build:
       runs-on: ubuntu-latest
       steps:
-       - name: HelloWorld
-         run: |
-           docker run HelloWorld
-           mkdir artifacts 
-           cd artifacts
-           wget https://hub.docker.com/_/hello-world
-       - uses: actions/upload-artifact@v2
-
+        - uses: actions/checkout@v3
+        - name: build
+          shell: bash
+          run: |
+            docker build -t logger .
+            docker images 
+            docker inspect logger
+            docker inspect logger 
