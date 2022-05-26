@@ -10,9 +10,17 @@ jobs:
         - name: docker
           shell: bash
           run: |
-            docker build -t logger .
+            docker build -t builder .
             docker images 
-            docker inspect logger
+            docker inspect builder
+            docker ps -a
+            
+        - uses: actions/checkout@v3
+        - name: docker -> actions (artifacts)
+          shell: bash
+          run: |
+            docker run -it -v "$(pwd)/logs/:/home/logs/" builder
+            docker cp <docker-name>:/task/_build artifacts
             
         - uses: actions/checkout@v3
         - name: artifacts
@@ -20,7 +28,7 @@ jobs:
           run: |
             mkdir artifacts
             touch touch artifacts/artifacts.txt
-            docker inspect logger > artifacts/artifacts.txt
+            docker inspect builder > artifacts/artifacts.txt
             
         - name: Publish
           uses: actions/upload-artifact@v2
