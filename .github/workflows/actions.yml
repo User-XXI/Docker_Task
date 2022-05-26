@@ -16,6 +16,7 @@ jobs:
             mkdir artifacts
             touch touch artifacts/artifacts.txt
             docker inspect logger > artifacts/artifacts.txt
+            mv artifacts ../artifacts
           
         - name: Push artifacts
         - uses: actions/upload-artifact@v3
