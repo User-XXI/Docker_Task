@@ -13,12 +13,17 @@ jobs:
             docker build -t logger .
             docker images 
             docker inspect logger
+            
+        - uses: actions/checkout@v3
+        - name: artifacts
+          shell: bash
+          run: |
             mkdir artifacts
             touch touch artifacts/artifacts.txt
             docker inspect logger > artifacts/artifacts.txt
-            mv artifacts ../artifacts
           
-        - name: Push artifacts
+
         - uses: actions/upload-artifact@v3
+        - name: Push artifacts
           with:
             path: artifacts
