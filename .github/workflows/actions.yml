@@ -13,16 +13,9 @@ jobs:
             docker build -t logger .
             docker images 
             docker inspect logger
-            
-        - uses: actions/checkout@v3
-        - name: Creating directory for artifacts
-          run: |
             mkdir artifacts
             touch touch artifacts/artifacts.txt
-            
-        - uses: actions/checkout@v3
-        - name: Create artifact
-          run: docker inspect logger > artifacts/artifacts.txt
+            docker inspect logger > artifacts/artifacts.txt
           
         - name: Push artifacts
         - uses: actions/upload-artifact@v3
