@@ -19,7 +19,7 @@ jobs:
         - name: docker run
           shell: bash
           run: |
-            docker run --name=taskdock -it -v "$(pwd)/logs/:/home/logs/" builder
+            docker run --name=taskdock -v "$(pwd)/logs/:/home/logs/" builder
             exit
             
 
