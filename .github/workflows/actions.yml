@@ -8,9 +8,6 @@ jobs:
       steps:
 
         - uses: actions/checkout@v3
-        - name: fix docker 
-          shell: bash
-          run: sudo chmod 666 /var/run/docker.sock
 
         - name: docker build
           shell: bash
@@ -24,8 +21,7 @@ jobs:
             
         - name: artifacts
           shell: bash
-          run: |
-            mkdir artifacts
+          run: mkdir artifacts
 
         - name: docker cp
           shell: bash
