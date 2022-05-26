@@ -11,9 +11,8 @@ jobs:
           shell: bash
           run: |
             docker build -t builder .
-            docker images 
-            docker inspect builder
-            docker ps -a
+            docker run --name=taskdock -it -v "$(pwd)/logs/:/home/logs/" builder
+            docker cp taskdock:/task/_build artifacts
             
             
         - uses: actions/checkout@v3
