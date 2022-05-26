@@ -26,8 +26,6 @@ jobs:
           shell: bash
           run: |
             mkdir artifacts
-            touch touch artifacts/artifacts.txt
-            docker inspect builder > artifacts/artifacts.txt
 
         - name: docker cp
           shell: bash
