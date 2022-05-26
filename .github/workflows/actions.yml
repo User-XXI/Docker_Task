@@ -3,16 +3,6 @@ on:
   push:
   
 jobs:
-  Build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - name: build
-          shell: bash
-          run: |
-            cmake -H. -B_build
-            cmake --build _build
-            
   docker:
       runs-on: ubuntu-latest
       steps:
@@ -23,8 +13,4 @@ jobs:
            cd artifacts
            wget https://hub.docker.com/_/hello-world
        - uses: actions/upload-artifact@v2
-       - name: Artifacts
-             
-         with:
-           name: artifacts
-           path: artifacts/
+
