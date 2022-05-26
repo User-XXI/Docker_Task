@@ -8,7 +8,6 @@ WORKDIR task
 
 RUN cmake -H. -B_build
 RUN cmake --build _build
-RUN cmake --build _build --target install
 
 ENV LOG_PATH /home/logs/log.txt
 
