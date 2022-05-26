@@ -23,7 +23,3 @@ jobs:
             docker inspect logger > artifacts/artifacts.txt
           
 
-        - uses: actions/upload-artifact@v3
-        - name: Push artifacts
-          with:
-            path: artifacts
